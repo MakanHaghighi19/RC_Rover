@@ -84,5 +84,5 @@ void setup() {
 
 void loop() {
 string dataString;
-if (btSerial.available()) 
+if (btSerial.available());
 }
