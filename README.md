@@ -14,8 +14,11 @@ This project demonstrates key concepts in computer engineering, including embedd
 - HC-05 Bluetooth module (2)
 - DC motors with motor driver (L298N)
 - Ultrasonic Sensor (HC-SR04)
-- 3D printed car chassis and parts
+- 3D printed car chassis and parts (Models attached in seperate file)
 - 9V batteries (2)
+- PCB Perfboard (3)
+    -  5x7 (2)
+    -  3x7 (1)
 
 **Software**
 The software for this project includes Arduino IDE for motor control, Bluetooth communication, and crash detection. The code is available in GitHub files attached to this document.
