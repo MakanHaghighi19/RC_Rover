@@ -1,11 +1,11 @@
 #include <SoftwareSerial.h>
 
-SoftwareSerial btSerial(2, 3);
+SoftwareSerial btSerial(2, 3); // RX | TX
 
-//initialize the data received by the transmitted
 struct PacketData {
   byte lxAxisValue;
   byte lyAxisValue;
+
   byte rxAxisValue;
   byte ryAxisValue;
 };
@@ -13,77 +13,57 @@ struct PacketData {
 PacketData data;
 
 //assign ports for right motor
-int enb = 7;
-int rmotor_pin1 = 10;
-int rmotor_pin2 = 9;
+  int enb = 7;
+  int rmotor_pin1 = 10;
+  int rmotor_pin2 = 9;
 
 //assign ports for left motor
-int ena = 8;
-int lmotor_pin1 = 12;
-int lmotor_pin2 = 11;
+  int ena = 8;
+  int lmotor_pin1 = 12;
+  int lmotor_pin2 = 11;
+
+//assign ports for Ultrasonic Sensor
+  int trig_pin = 4;
+  int echo_pin = 5;
 
 unsigned long lastRecvTime = 0;
 
+long DistanceMeasurement(){
+  digitalWrite(trig_pin, LOW);
+  delayMicroseconds(2);
+  digitalWrite(trig_pin, LOW)
+  delayMicroseconds(10);
+  digitalWrite(trig_pin, LOW);
 
-void setup() {
-  pinMode(enb, OUTPUT);
-  pinMode(rmotor_pin1, OUTPUT);
-  pinMode(rmotor_pin2, OUTPUT);
-
-  pinMode(ena, OUTPUT);
-  pinMode(lmotor_pin1, OUTPUT);
-  pinMode(lmotor_pin2, OUTPUT);
-
-  Serial.begin(9600);
-  btSerial.begin(9600);
+  long duration = pulseIn(echo_pin,HIGH);
+  long distance = (duration / 2) / 29.1;
 }
 
-void loop() {
-string dataString;
-if (btSerial.available()) 
-}
-#include <SoftwareSerial.h>
-
-SoftwareSerial btSerial(2, 3);
-
-//initialize the data received by the transmitted
-struct PacketData {
-  byte lxAxisValue;
-  byte lyAxisValue;
-  byte rxAxisValue;
-  byte ryAxisValue;
-};
-
-PacketData data;
-
-//assign ports for right motor
-int enb = 7;
-int rmotor_pin1 = 10;
-int rmotor_pin2 = 9;
-
-//assign ports for left motor
-int ena = 8;
-int lmotor_pin1 = 12;
-int lmotor_pin2 = 11;
-
-unsigned long lastRecvTime = 0;
-
-
 void setup() {
-  pinMode(enb, OUTPUT);
-  pinMode(rmotor_pin1, OUTPUT);
-  pinMode(rmotor_pin2, OUTPUT);
+  pinMode(enableRightMotor, OUTPUT);
+  pinMode(rightMotorPin1, OUTPUT);
+  pinMode(rightMotorPin2, OUTPUT);
 
-  pinMode(ena, OUTPUT);
-  pinMode(lmotor_pin1, OUTPUT);
-  pinMode(lmotor_pin2, OUTPUT);
+  pinMode(enableLeftMotor, OUTPUT);
+  pinMode(leftMotorPin1, OUTPUT);
+  pinMode(leftMotorPin2, OUTPUT);
+
+  pinMode(trig_pin, OUTPUT);
+  pinMode(echo_pin, OUTPUT);
 
   Serial.begin(9600);
-  btSerial.begin(9600);
+  btSerial.begin(38400);
 }
 
 void loop() {
   String dataString;
+  long distance = DistanceMeasurement();
+
+  if (distance < 20) {
+    analogWrite(enb, 0);
+    analogWrite(ena, 0);
+  } else{
+
   if (btSerial.available()) {
     dataString = btSerial.readStringUntil('\n');
     sscanf(dataString.c_str(), "%d,%d,%d,%d", &data.lxAxisValue, &data.lyAxisValue, &data.rxAxisValue, &data.ryAxisValue);
@@ -143,6 +123,7 @@ void loop() {
       // Signal lost after 1 second. Stop the motors
       analogWrite(enableRightMotor, 0);
       analogWrite(enableLeftMotor, 0);
+      }
     }
   }
 }
