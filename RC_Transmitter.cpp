@@ -32,10 +32,10 @@ int mapAndAdjustJoystickDeadBandValues(int value, bool reverse) {
 }
 
 void loop() {
-  data.lxAxisValue = mapAndAdjustJoystickDeadBandValues(analogRead(A3), false);
-  data.lyAxisValue = mapAndAdjustJoystickDeadBandValues(analogRead(A4), false);
-  data.rxAxisValue = mapAndAdjustJoystickDeadBandValues(analogRead(A5), false);
-  data.ryAxisValue = mapAndAdjustJoystickDeadBandValues(analogRead(A6), false);
+  data.lxAxisValue = mapAndAdjustJoystickDeadBandValues(analogRead(A1), false);
+  data.lyAxisValue = mapAndAdjustJoystickDeadBandValues(analogRead(A0), false);
+  data.rxAxisValue = mapAndAdjustJoystickDeadBandValues(analogRead(A2), false);
+  data.ryAxisValue = mapAndAdjustJoystickDeadBandValues(analogRead(A3), false);
 
   String dataString = String(data.lxAxisValue) + "," + String(data.lyAxisValue) + "," +
                       String(data.rxAxisValue) + "," + String(data.ryAxisValue) + "\n";
