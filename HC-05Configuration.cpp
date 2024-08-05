@@ -19,3 +19,19 @@ void loop() {
     Serial.write(btSerial.read());
   }
 }
+/*
+Slave Command:
+AT
+AT+UART=38400,0,0
+AT+ROLE=0
+AT+ADDR?
+Ex address: 98D4:83:F185BA
+
+
+Master Commands:
+AT
+AT+UART=38400,0,0
+AT+ROLE=1
+AT+CMODE=0
+AT+BIND=98D4,83,F185BA  (When entering the address for the HC-05 slave change the cologn to commas.)
+*/
