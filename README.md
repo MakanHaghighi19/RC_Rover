@@ -17,12 +17,20 @@ This project demonstrates key concepts in computer engineering, including embedd
 - L298N motor driver
 - Ultrasonic Sensor (HC-SR04)
 - 3D printed car chassis and parts (Models attached in seperate file)
-- 9V batteries (2)
+- Lipo Battery 2200mAh 11.1V (1)
+- 9V Battery
 - PCB Perfboard (3)
     -  5x7 (2)
     -  3x7 (1)
 - PS2 Joystick Module
 - KY-023 Dual Axis Joystick Module
+- Female Pin Headers (6)
+    - 1 x 16 (4)
+    - 1 x 5 (2)
+
+**Note**
+- The commands that were used to configure the HC-05 Bluetooth modules are provided as comments in the configuration file itself.
+- I have also written a detailed report regarding my project. Please see more about it at my website: 
 
 **Software**
 The software for this project includes Arduino IDE for motor control, Bluetooth communication, and crash detection. The code is available in GitHub files attached to this document.
