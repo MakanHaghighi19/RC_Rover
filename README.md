@@ -30,7 +30,10 @@ This project demonstrates key concepts in computer engineering, including embedd
 
 **Note**
 - The commands that were used to configure the HC-05 Bluetooth modules are provided as comments in the configuration file itself.
-- I have also written a detailed report regarding my project. Please see more about it at my website: 
+- I have attached a very detailed engineering report to my github repository.
+- I have also written a detailed report regarding my project. Please see more about it at my website:
+    - https://sites.google.com/view/makan-haghighi/home?authuser=0
+  
 
 **Software**
 The software for this project includes Arduino IDE for motor control, Bluetooth communication, and crash detection. The code is available in GitHub files attached to this document.
